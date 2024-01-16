@@ -2,6 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const sqlite3 = require('sqlite3')
+const { booksSQLite } = require("./books")
 const db = new sqlite3.Database('./mydb.db')
 
 
@@ -119,5 +120,6 @@ app.delete('/Teacher/:id', (req, res) => {
     return res.json(`Teacher with ID ${id} deleted successfully.`);
   });
 });
+booksSQLite(app, db)
 
 
